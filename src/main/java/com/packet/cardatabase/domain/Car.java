@@ -4,6 +4,20 @@ import javax.persistence.*;
 
 @Entity
 public class Car {
+
+    //다대일 관계 정의 : LAZY(지연검색)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "owner")
+    private Owner owner;
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
+    }
+
     // 엔티티 클래스는 고유 ID를 가져야 함. 현재는 자동으로 생성하도록 AUTO 걸어줌
     @Id 
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,8 +30,8 @@ public class Car {
     private int price;
 
     //데이터베이스의 컬럼명은 expaination이고 코드에서 사용하는 이름은 description이다.
-    @Column(name = "explanation", nullable = false, length = 512)
-    private String description;
+    //@Column(name = "explanation", nullable = false, length = 512)
+    //private String description;
 
     public Car() {}
 
