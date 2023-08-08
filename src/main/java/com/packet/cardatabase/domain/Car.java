@@ -1,9 +1,22 @@
 package com.packet.cardatabase.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Car {
+
+    // 엔티티 클래스는 고유 ID를 가져야 함. 현재는 자동으로 생성하도록 AUTO 걸어줌
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    private String brand, model, color, registerNumber;
+
+    //error point :: year는 sql에서 예약어이기 때문에 꼭 이름 설정 해줘야함
+    @Column(name = "`YEAR`")
+    private int year;
+    private int price;
 
     //다대일 관계 정의 : LAZY(지연검색)
     @ManyToOne(fetch = FetchType.LAZY)
@@ -18,16 +31,18 @@ public class Car {
         this.owner = owner;
     }
 
-    // 엔티티 클래스는 고유 ID를 가져야 함. 현재는 자동으로 생성하도록 AUTO 걸어줌
-    @Id 
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    private String brand, model, color, registerNumber;
+    //다대다 관계 정의 (잘 안씀)
+    /*@ManyToMany(mappedBy = "cars")
+    private Set<Owner> owners = new HashSet<Owner>();
 
-    //error point :: year는 sql에서 예약어이기 때문에 꼭 이름 설정 해줘야함
-    @Column(name = "`YEAR`")
-    private int year;
-    private int price;
+    public Set<Owner> getOwners() {
+        return owners;
+    }
+
+    public void setOwners(Set<Owner> owners) {
+        this.owners = owners;
+    }
+*/
 
     //데이터베이스의 컬럼명은 expaination이고 코드에서 사용하는 이름은 description이다.
     //@Column(name = "explanation", nullable = false, length = 512)
@@ -36,7 +51,7 @@ public class Car {
     public Car() {}
 
     //자동으로 id 생성하므로 생성자에 id 필드 필요없음
-    public Car(String brand, String model, String color, String registerNumber, int year, int price) {
+    public Car(String brand, String model, String color, String registerNumber, int year, int price, Owner owner) {
         super();
         this.brand = brand;
         this.model = model;
@@ -44,6 +59,7 @@ public class Car {
         this.registerNumber = registerNumber;
         this.year = year;
         this.price = price;
+        this.owner = owner;
     }
 
     public long getId() {
