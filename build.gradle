@@ -21,6 +21,8 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	//implementation 'com.h2database:h2'
 	implementation 'org.mariadb.jdbc:mariadb-java-client'
+	//스프링 데이터 REST
+	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 }
 
