@@ -1,9 +1,6 @@
 package com.packet.cardatabase;
 
-import com.packet.cardatabase.domain.Car;
-import com.packet.cardatabase.domain.CarRepository;
-import com.packet.cardatabase.domain.Owner;
-import com.packet.cardatabase.domain.OwnerReposotiry;
+import com.packet.cardatabase.domain.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +25,9 @@ public class CardatabaseApplication implements CommandLineRunner {
 	@Autowired
 	private OwnerReposotiry ownerReposotiry;
 
+	@Autowired
+	private UserRepository userRepository;
+
 	public static void main(String[] args) {
 		//주석 추가시 재시작
 		SpringApplication.run(CardatabaseApplication.class, args);
@@ -51,5 +51,11 @@ public class CardatabaseApplication implements CommandLineRunner {
 		for (Car car : carRepository.findAll()) {
 			logger.info(car.getBrand() + " " + car.getModel());
 		}
+
+		//사용자 이름 : user, 암호 : user
+		userRepository.save(new User("user","$2a$12$ab4xEowJfVi6.L.S1nCvvuAjbrQobvJ4p7ybxwhQfUmB1ox8VLRNC", "USER"));
+		//사용자 이름 : admin, 암호 : admin
+		userRepository.save(new User("admin","$2a$12$5SYVl20JV/vVIQx6vSfkfeNHpUnTo647D/7ROtAP/u1Q1I/4xTcJ2", "ADMIN"));
+
 	}
 }
