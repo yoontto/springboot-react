@@ -19,8 +19,12 @@ import java.util.Collections;
 @Component
 public class AuthenticationFilter extends OncePerRequestFilter {
 
+    private final JwtService jwtService;
+
     @Autowired
-    private JwtService jwtService;
+    public AuthenticationFilter(JwtService jwtService){
+        this.jwtService = jwtService;
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request

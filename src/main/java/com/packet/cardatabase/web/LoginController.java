@@ -16,12 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LoginController {
 
-    @Autowired
-    private JwtService jwtService;
+    private final JwtService jwtService;
 
     //SecurityConfig에서 Bean주입 시켜줌
-    @Autowired
-    AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
+
+    public LoginController(JwtService jwtService, AuthenticationManager authenticationManager) {
+        this.jwtService = jwtService;
+        this.authenticationManager = authenticationManager;
+    }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<?> getToken(@RequestBody AccountCredentials credentials) {

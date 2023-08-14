@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CarController {
 
-    @Autowired
-    private CarRepository carRepository;
+    private final CarRepository carRepository;
+
+    public CarController(CarRepository carRepository) {
+        this.carRepository = carRepository;
+    }
 
     @RequestMapping("/cars")
     public Iterable<Car> getCars() {

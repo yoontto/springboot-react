@@ -28,16 +28,23 @@ import java.util.Arrays;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private final UserDetailServiceImpl userDetailService;
+    private final AuthenticationFilter authenticationFilter;
+    private final AuthEntryPoint exceptionHandler;
+
     @Autowired
-    private UserDetailServiceImpl userDetailService;
-    @Autowired
-    private AuthenticationFilter authenticationFilter;
+    public SecurityConfig(UserDetailServiceImpl service1
+                        , AuthenticationFilter service2
+                        , AuthEntryPoint service3) {
+        this.userDetailService = service1;
+        this.authenticationFilter = service2;
+        this.exceptionHandler = service3;
+    }
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailService).passwordEncoder(new BCryptPasswordEncoder());
     }
-    @Autowired
-    private AuthEntryPoint exceptionHandler;
 
 
     @Bean

@@ -19,14 +19,19 @@ public class CardatabaseApplication implements CommandLineRunner {
 
 	private static final Logger logger = LoggerFactory.getLogger(CardatabaseApplication.class);
 
-	@Autowired
-	private CarRepository carRepository;
+	private final CarRepository carRepository;
+	private final OwnerReposotiry ownerReposotiry;
+	private final UserRepository userRepository;
 
 	@Autowired
-	private OwnerReposotiry ownerReposotiry;
+	public CardatabaseApplication(CarRepository carRepository
+			, OwnerReposotiry ownerReposotiry
+			, UserRepository userRepository) {
+		this.carRepository = carRepository;
+		this.ownerReposotiry = ownerReposotiry;
+		this.userRepository = userRepository;
+	}
 
-	@Autowired
-	private UserRepository userRepository;
 
 	public static void main(String[] args) {
 		//주석 추가시 재시작
