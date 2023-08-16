@@ -1,25 +1,33 @@
 import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+ function App() {
+  //함수 이용
+  /* return (
+     <div>
+       <h1>Hello world</h1>
+       <p>This is my first React component</p>
+     </div>
+   );*/
+
+  //프래그먼트 이용
+  /* return (
+    <React.Fragment>
+      <h1>Hello world</h1>
+      <p>This is my first React component</p>
+    </React.Fragment>
+    );*/
+  
+  //더 간단한 프래그먼트
+  return(
+    <>
+      <h1>Hello world</h1>
+      <p>This is my first React component</p>
+    </>
   );
-}
+ }
+
 
 export default App;
