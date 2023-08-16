@@ -32,6 +32,7 @@ public interface CarRepository extends CrudRepository<Car, Long> {
     List<Car> findByYear(String year);
 
 
+
     /* 다중조건 select문 */
     //브랜드와 모델로 자동차를 검색
     List<Car> findByBrandAndModel(String brand, String model);
