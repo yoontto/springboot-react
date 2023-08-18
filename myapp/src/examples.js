@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 /* 화살표 함수 */
 const calc = x => x * 2;    //calc라는 변수에 익명함수 저장
 calc(5);                    //10
@@ -50,6 +52,23 @@ const e = new Employee('jw', 'jeon', 'juim', '1억');
 console.log(e.firstName, e.lastName, e.title, e.salary);
 
 
+/* 프롭과 상태 */
+//프롭은 상위 컴포넌트에서 하위 컴포넌트로 값을 전달하는 메커니즘
+function ParentComponent() {
+    const name = "Yoonseo";
+    return <ChildComponenet name={name} />;
+}
+
+function ChildComponenet(props) {
+    console.log(props);
+    return <p>Hello, {props.name}</p>;
+}
 
 
+
+//상태는 useState 함수로 만듦
+const [name3, setName] = useState('jim');
+
+setName('hing');
+console.log(name3);
 
