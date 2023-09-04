@@ -54,6 +54,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
+        //모든 사용자가 모든 엔드포인트 접근할 수 있도록 설정
+        http.csrf().disable().cors().and()
+                        .authorizeRequests().anyRequest().permitAll();
+
+        /*
+            보안 잠시 내림 (10장 208p)
         //세션 생성하지 않음 -> csrf 토큰도 생성하지 않음
         //cors 설정 추가
         http.csrf().disable().cors().and()
@@ -68,7 +74,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(exceptionHandler).and()
                 //AuthenticationFilter 구성을 추가
                 .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
-
+        */
                 
     }
 
