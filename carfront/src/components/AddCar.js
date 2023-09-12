@@ -1,4 +1,5 @@
-import { Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+import { Dialog, DialogActions, DialogContent, DialogTitle, Stack, TextField } from '@mui/material';
+import Button from '@mui/material/Button';
 import React from 'react';
 import { useState } from 'react';
 
@@ -36,19 +37,23 @@ function AddCar(props) {
 
     return (
         <div>
-            <button onClick={handleClickOpen}>차 추가하기</button>
+            <Button onClick={handleClickOpen} variant="contained">
+                차 추가하기
+            </Button>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>New Car</DialogTitle>
                 <DialogContent>
-                    <input placeholder='Brand' name='brand' value={car.brand} onChange={handleChange}/><br/>
-                    <input placeholder='Model' name='model' value={car.model} onChange={handleChange}/><br/>
-                    <input placeholder='Color' name='color' value={car.color} onChange={handleChange}/><br/>
-                    <input placeholder='Year' name='year' value={car.year} onChange={handleChange}/><br/>
-                    <input placeholder='Price' name='price' value={car.price} onChange={handleChange}/><br/>
+                    <Stack spacing={0} mt={1} marginX={2}>
+                        <TextField autoFocus variant="standard" label='Brand' name='brand' value={car.brand} onChange={handleChange}/><br/>
+                        <TextField autoFocus variant="standard" label='Model' name='model' value={car.model} onChange={handleChange}/><br/>
+                        <TextField autoFocus variant="standard" label='Color' name='color' value={car.color} onChange={handleChange}/><br/>
+                        <TextField autoFocus variant="standard" label='Year' name='year' value={car.year} onChange={handleChange}/><br/>
+                        <TextField autoFocus variant="standard" label='Price' name='price' value={car.price} onChange={handleChange}/><br/>
+                    </Stack>
                 </DialogContent>
                 <DialogActions>
-                    <button onClick={handleClose}>Cancel</button>
-                    <button onClick={handleSave}>Save</button>
+                    <Button variant='contained' onClick={handleClose}>취소</Button>
+                    <Button variant='contained' onClick={handleSave}>저장</Button>
                 </DialogActions>
             </Dialog>
         </div>

@@ -1,4 +1,7 @@
 import { Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import EditIcon from '@mui/icons-material/Edit';
 import React from 'react';
 import { useState } from 'react';
 
@@ -36,7 +39,9 @@ function EditCar(props){
 
     return (
         <div>
-            <button onClick={handleClickOpen}>Edit</button>
+            <IconButton onClick={handleClickOpen}>
+                <EditIcon color="primary"/>
+            </IconButton>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Edit Cars</DialogTitle>
                 <DialogContent>
@@ -47,8 +52,8 @@ function EditCar(props){
                     <input placeholder='Price' name='price' value={car.price} onChange={handleChange}/><br/>
                 </DialogContent>
                 <DialogActions>
-                    <button onClick={handleClose}>Cancel</button>
-                    <button onClick={handleSave}>Save</button>
+                    <Button onClick={handleClose}>취소</Button>
+                    <Button onClick={handleSave}>저장</Button>
                 </DialogActions>
             </Dialog>
         </div>

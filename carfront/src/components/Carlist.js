@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { SERVER_URL } from '../constans';
 import { DataGrid, GridToolbarContainer, GridToolbarExport, gridClasses } from '@mui/x-data-grid';
 import { Snackbar } from '@mui/material';
+import Stack from '@mui/material/Stack';
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
 import AddCar from './AddCar';
 import EditCar from './EditCar';
 
@@ -35,10 +38,12 @@ function Carlist() {
         {
             field: '_link.self.href',
             headerName: '',
-            sortable: false,
+            sortable: false,    
             filterable: false,    
             renderCell: row => 
-                <button onClick={() => onDelClick(row.id)}>Delete</button>
+                <IconButton onClick={() => onDelClick(row.id)}>
+                    <DeleteIcon color="error"/>
+                </IconButton>
         }
     ];
 
@@ -108,7 +113,9 @@ function Carlist() {
 
     return (
         <React.Fragment>
-            <AddCar addsCar={addCar}/>
+            <Stack mt={2} mb={2}>
+                <AddCar addsCar={addCar}/>
+            </Stack>
             <div style={{ height: 500, width: '100%' }}>
                 <DataGrid 
                     rows={cars}
