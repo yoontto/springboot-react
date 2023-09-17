@@ -26,7 +26,10 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	//implementation 'com.h2database:h2'
-	implementation 'org.mariadb.jdbc:mariadb-java-client'
+	implementation 'org.mariadb.jdbc:mariadb-java-client:2.2.1'
+	implementation 'org.hibernate:hibernate-core'
+	implementation 'org.hibernate:hibernate-entitymanager'
+
 	//스프링 데이터 REST
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	//스프링 시큐리티
