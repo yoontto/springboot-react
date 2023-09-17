@@ -20,6 +20,11 @@ jar {
 	enabled = false
 }
 
+bootJar {
+	archivesBaseName='mycar-react-boot'
+	archiveFileName='mycar-react-boot.jar'
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-devtools'
