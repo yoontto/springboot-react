@@ -1,1 +1,1 @@
-export const SERVER_URL='http://localhost:8080/';
+export const SERVER_URL='https://mycar-react-boot-00e558e80aba.herokuapp.com/';
